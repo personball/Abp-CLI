@@ -1,0 +1,33 @@
+﻿using McMaster.Extensions.CommandLineUtils;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
+
+namespace AbpTools
+{
+    [Command("abp")]
+    [VersionOptionFromMember("--version", MemberName = nameof(GetVersion))]
+    [Subcommand(
+        typeof(InitCommand))]
+    class Abp : AbpCommandBase
+    {
+        public static void Main(string[] args) => CommandLineApplication.Execute<Abp>(args);
+
+        protected override Task<int> OnExecuteAsync(CommandLineApplication app)
+        {
+            // this shows help even if the --help option isn't specified
+            app.ShowHelp();
+            return Task.FromResult(1);
+        }
+
+        public override List<string> CreateArgs()
+        {
+            var args = new List<string>();
+
+            return args;
+        }
+
+        private static string GetVersion()
+            => typeof(Abp).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+    }
+}
