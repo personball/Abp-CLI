@@ -200,9 +200,22 @@ namespace AbpTools
 
             using (var webClient = new WebClient())
             {
+                webClient.Headers.Add("Accept-Language", " en-US");
+                webClient.Headers.Add("Accept", " text/html, application/xhtml+xml, */*");
+                webClient.Headers.Add("User-Agent", "dotnet tools abplus,a cli tool for ABP framework.");
+
                 Console.WriteLine($"Start fetch zip file:{zip_url}");
                 Console.WriteLine($"Downloading...");
-                webClient.DownloadFile(new Uri(zip_url), filePath);
+
+                try
+                {
+                    webClient.DownloadFile(zip_url, filePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
                 Console.WriteLine($"Download success and save as {filePath}");
             }
         }
