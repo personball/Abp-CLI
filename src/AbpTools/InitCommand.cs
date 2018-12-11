@@ -62,6 +62,7 @@ namespace AbpTools
             Console.WriteLine($"ProjectName\t:{ProjectName}");
             Console.WriteLine($"MPA\t\t:{Mpa}");
             Console.WriteLine($"SpaType\t\t:{SpaType}");
+            Console.WriteLine($"RenameBackup\t:{RenameBackup}");
 
             //set project folder
             var projectFolder = Path.Combine(Directory.GetCurrentDirectory(), ProjectName);
@@ -94,7 +95,8 @@ namespace AbpTools
             await FetchTemplateZipFile(userName, repoName, tagName, filePath);
 
             //Extract Zip File
-            Console.WriteLine($"Extracting Project Template Zip:{filePath}>{projectFolder}...");
+            Console.WriteLine($"Extracting Project Template Zip:{filePath}...");
+            Console.WriteLine($"Extracting To:{projectFolder}...");
             ExtractZipFile(filePath, projectFolder, repoName);
 
             //Folders To Rename
@@ -103,17 +105,18 @@ namespace AbpTools
             if (!Mpa)
             {
                 excludeFolders.Add($"./aspnet-core/src/{PlaceHolder}.Web.Mvc");
+                //TODO@personball remove web.mvc entry in vs solution file(sln). 
                 switch (SpaType.ToLower())
                 {
                     case "ng":
-                        excludeFolders.Remove("angular");
+                        excludeFolders.Remove("./angular");
                         break;
                     case "react":
-                        excludeFolders.Remove("reactjs");
+                        excludeFolders.Remove("./reactjs");
                         break;
                     case "vue":
                     default:
-                        excludeFolders.Remove("vue");
+                        excludeFolders.Remove("./vue");
                         break;
                 }
             }
@@ -124,6 +127,7 @@ namespace AbpTools
                 var directoryToDel = Path.Combine(projectFolder, excludeFolder);
                 if (Directory.Exists(directoryToDel))
                 {
+                    Console.WriteLine($"ExcludeFolders Delete:{directoryToDel}");
                     Directory.Delete(directoryToDel, true);
                 }
             }
@@ -227,6 +231,7 @@ namespace AbpTools
             {
                 FileStream fs = File.OpenRead(archiveFilenameIn);
                 zf = new ZipFile(fs);
+                var firstZipEntry = zf[0];
 
                 foreach (ZipEntry zipEntry in zf)
                 {
@@ -244,7 +249,7 @@ namespace AbpTools
 
                     // Manipulate the output filename here as desired.
                     //remove first level folder
-                    if (entryFileName.StartsWith(repoName))
+                    if (firstZipEntry.IsDirectory)
                     {
                         entryFileName = entryFileName.Substring(entryFileName.IndexOf("/") + 1);
                     }
