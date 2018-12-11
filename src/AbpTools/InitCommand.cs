@@ -143,7 +143,7 @@ namespace AbpTools
             Console.WriteLine($"Renaming {PlaceHolder} to {newCompanyName}{(newNames.Length > 1 ? "." : "")}{newProjectName}...");
             var slnRenamer = new SolutionRenamer(projectFolder, companyNamePlaceHolder, projectNamePlaceHolder, newCompanyName, newProjectName)
             {
-                CreateBackup = true
+                CreateBackup = RenameBackup
             };
 
             slnRenamer.Run();
