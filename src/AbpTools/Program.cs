@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AbpTools
 {
-    [Command("abp")]
+    [Command(Consts.ParentCommandName)]
     [VersionOptionFromMember("--version", MemberName = nameof(GetVersion))]
     [Subcommand(
         typeof(InitCommand))]

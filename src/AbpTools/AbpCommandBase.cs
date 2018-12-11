@@ -14,7 +14,7 @@ namespace AbpTools
         {
             var args = CreateArgs();
 
-            Console.WriteLine("Result = abp " + ArgumentEscaper.EscapeAndConcatenate(args));
+            Console.WriteLine($"Result = {Consts.ParentCommandName} " + ArgumentEscaper.EscapeAndConcatenate(args));
             return Task.FromResult(0);
         }
     }
