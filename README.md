@@ -44,6 +44,6 @@ ABP Command Line Tool.
 
 1. SubCommand `abplus add` for code scaffold. 
 1. Other SubCommand.
-1. Need a stable **Project Template Zip File Repository**, it is base on github releaes api with **Rate Limit**.
+
 
 # MIT
