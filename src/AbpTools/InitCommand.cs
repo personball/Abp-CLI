@@ -11,7 +11,7 @@ using WebApiClient;
 
 namespace AbpTools
 {
-    [Command(Description = "init a project from project template")]
+    [Command(Description = "Init a project from project template.")]
     class InitCommand : AbpCommandBase
     {
         [Option("-T|--template-name", "TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.", CommandOptionType.SingleValue)]
@@ -20,7 +20,7 @@ namespace AbpTools
         [Option("-h|--place-holder", "PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.", CommandOptionType.SingleValue)]
         public string PlaceHolder { get; set; } = "AbpCompanyName.AbpProjectName";
 
-        [Argument(0, "Your project name, default as 'AbpDemo'.", nameof(ProjectName), ShowInHelpText = true)]
+        [Argument(0, nameof(ProjectName), "Your project name, default as 'AbpDemo'.", ShowInHelpText = true)]
         public string ProjectName { get; set; } = "AbpDemo";
 
         [Option("-m", "Is this project a Multi-Pages Application? Default as false.", CommandOptionType.NoValue)]
