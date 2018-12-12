@@ -1,6 +1,8 @@
 # Abp-CLI
 
-ABP Command Line Tool.
+ABP Command Line Tool.  
+
+This command is built following [dotnet core global tools](https://docs.microsoft.com/zh-cn/dotnet/core/tools/global-tools).  
 
 # Install
 
@@ -45,5 +47,24 @@ ABP Command Line Tool.
 1. SubCommand `abplus add` for code scaffold. 
 1. Other SubCommand.
 
+# Project Template Repository Specification
+
+Everyone can custom your own **Project Template Repository** by fork [aspnetboilerplate/module-zero-core-template](https://github.com/aspnetboilerplate/module-zero-core-template), and use `abplus init -T YourGithubUserName/YourOwnProjectTemplateRepository@tagName` to init your project.  
+
+But there are two notices:
+
+1. Manage releases of **Your Own Project Template Repository**, set a **latest** tag to latest release, or replace `@tagName` in command option -T like `@v1.2.3`  
+1. Keep the **Folder Structure** as below:
+
+```
+    |                               //root
+    |-angular                       //optional  
+    |-aspnet-core  
+        |-src  
+            |-{PlaceHolder}.Web.Mvc //MPA project  
+    |-reactjs                       //optional  
+    |-vue                           //optional  
+    //other folders and files not care.  
+```
 
 # MIT
