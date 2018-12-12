@@ -10,12 +10,16 @@ This command is built following [dotnet core global tools](https://docs.microsof
 
 # Usage
 
-    abplus init 
+    abplus init YourProjectName
+
+    Example
+
+    abplus init FamilySrv.PlanFork
 
 # HelpText
 
     $> abplus --help
-    1.0.1
+    1.0.3
 
     Usage: abplus [options] [command]
 
@@ -24,20 +28,22 @@ This command is built following [dotnet core global tools](https://docs.microsof
     --help     Show help information
 
     Commands:
-    init       init a project from project template
+    init       Init a project from project template.
 
     Run 'abplus [command] --help' for more information about a command.
 
-    PS personball> abplus init --help
-    init a project from project template
+    $> abplus init --help
+    Init a project from project template.
 
-    Usage: abplus init [options]
+    Usage: abplus init [arguments] [options]
+
+    Arguments:
+    ProjectName         Your project name, default as 'AbpDemo'.
 
     Options:
     --help              Show help information
     -T|--template-name  TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.
     -h|--place-holder   PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.
-    -n|--project-name   Your project name, default as 'AbpDemo'.
     -m                  Is this project a Multi-Pages Application? Default as false.
     -t|--spa-type       Choose 'vue' for vuejs or 'ng' for angularjs or 'react' for reactjs. Any invalid value will be replaced by 'vue'.
     -b                  Rename Backup
