@@ -20,7 +20,7 @@ namespace AbpTools
         [Option("-h|--place-holder", "PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.", CommandOptionType.SingleValue)]
         public string PlaceHolder { get; set; } = "AbpCompanyName.AbpProjectName";
 
-        [Option("-n|--project-name", "Your project name, default as 'AbpDemo'.", CommandOptionType.SingleValue)]
+        [Argument(0, "Your project name, default as 'AbpDemo'.", nameof(ProjectName), ShowInHelpText = true)]
         public string ProjectName { get; set; } = "AbpDemo";
 
         [Option("-m", "Is this project a Multi-Pages Application? Default as false.", CommandOptionType.NoValue)]
