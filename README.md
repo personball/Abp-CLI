@@ -4,6 +4,8 @@ ABP Command Line Tool.
 
 This command is built following [dotnet core global tools](https://docs.microsoft.com/zh-cn/dotnet/core/tools/global-tools).  
 
+[中文版readme](https://github.com/personball/Abp-CLI/wiki)
+
 # Install
 
     dotnet tool install -g AbpTools
@@ -12,11 +14,13 @@ This command is built following [dotnet core global tools](https://docs.microsof
 
     abplus init YourProjectName
 
-    Example
+Example
 
     abplus init FamilySrv.PlanFork
 
 # HelpText
+
+abplus
 
     $> abplus --help
     1.0.3
@@ -35,6 +39,8 @@ This command is built following [dotnet core global tools](https://docs.microsof
     $> abplus init --help
     Init a project from project template.
 
+abplus init
+
     Usage: abplus init [arguments] [options]
 
     Arguments:
@@ -42,10 +48,12 @@ This command is built following [dotnet core global tools](https://docs.microsof
 
     Options:
     --help              Show help information
-    -T|--template-name  TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.
+    -T|--template-name  TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>], default as 
+                        'aspnetboilerplate/module-zero-core-template@latest'.
     -h|--place-holder   PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.
     -m                  Is this project a Multi-Pages Application? Default as false.
-    -t|--spa-type       Choose 'vue' for vuejs or 'ng' for angularjs or 'react' for reactjs. Any invalid value will be replaced by 'vue'.
+    -t|--spa-type       Choose 'vue' for vuejs or 'ng' for angularjs or 'react' for reactjs.
+                        Any invalid value will be replaced by 'vue'.
     -b                  Rename Backup
 
 # More features todo
