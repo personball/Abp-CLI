@@ -7,7 +7,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>abplus</ToolCommandName>
     <PackageOutputPath>../../nupkg</PackageOutputPath>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.0-beta" />
+    <PackageReference Include="Octokit" Version="0.32.0" />
     <PackageReference Include="SharpZipLib" Version="1.0.0" />
-    <PackageReference Include="WebApiClient.JIT" Version="0.2.8" />
   </ItemGroup>
 
 </Project>
