@@ -8,6 +8,7 @@
         public const string UserAgent = "dotnet global tools abplus, a cli tool for ABP framework.(github.com/personball/Abp-CLI)";
 
         public const string DefaultProjectTemplateName = "aspnetboilerplate/module-zero-core-template@latest";
+        public const string DefaultProjectTemplateForSPA = "personball/module-zero-core-template@latest";
         public const string DefaultPlaceHolder = "AbpCompanyName.AbpProjectName";
         public const string DefaultProjectName = "AbpDemo";
 

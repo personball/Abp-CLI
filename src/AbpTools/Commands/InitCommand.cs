@@ -45,13 +45,22 @@ namespace AbpTools.Commands
                 Console.WriteLine("Invalid TemplateName!Please Enter As Format aspnetboilerplate/module-zero-core-template@v4.2.0 ");
             }
 
-            if (!Mpa && string.IsNullOrWhiteSpace(SpaType))
+            if (!Mpa)
             {
-                SpaType = Prompt.GetString(Consts.Descriptions.Init.SpaTypeDescription, defaultValue: "vue");
-                SpaType = SpaType.ToLower();
-                if ("vue,ng,react".IndexOf(SpaType) == -1)
+                //switch to personball/module-zero-core-template to reduce size of project template zip file
+                if (TemplateName == Consts.DefaultProjectTemplateName)
                 {
-                    SpaType = "vue";
+                    TemplateName = Consts.DefaultProjectTemplateForSPA;
+                }
+
+                if (string.IsNullOrWhiteSpace(SpaType))
+                {
+                    SpaType = Prompt.GetString(Consts.Descriptions.Init.SpaTypeDescription, defaultValue: "vue");
+                    SpaType = SpaType.ToLower();
+                    if ("vue,ng,react".IndexOf(SpaType) == -1)
+                    {
+                        SpaType = "vue";
+                    }
                 }
             }
 
