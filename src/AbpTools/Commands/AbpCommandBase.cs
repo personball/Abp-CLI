@@ -14,8 +14,8 @@ namespace AbpTools.Commands
         /// <summary>
         /// TODO get placeholder in project template config?
         /// </summary>
-        [Option("-h|--place-holder", Consts.Descriptions.Base.PlaceHolderDescription, CommandOptionType.SingleValue)]
-        public string PlaceHolder { get; set; } = Consts.DefaultPlaceHolder;
+        [Option("-h|--placeholder", Consts.Descriptions.Base.PlaceHolderDescription, CommandOptionType.SingleValue)]
+        public string Placeholder { get; set; } = Consts.DefaultPlaceHolder;
         
         public abstract List<string> CreateArgs();
 

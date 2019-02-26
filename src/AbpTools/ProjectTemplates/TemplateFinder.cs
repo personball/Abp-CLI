@@ -13,13 +13,7 @@ namespace AbpTools.ProjectTemplates
 
         public TemplateFinder(string templateName)
         {
-            if (templateName.IndexOf('/') <= 0 || templateName.EndsWith('/'))
-            {
-                Console.WriteLine("Invalid TemplateName!Please Enter As Format aspnetboilerplate/module-zero-core-template@v4.2.0 ");
-                throw new ArgumentException("Invalid TemplateName", nameof(templateName));
-            }
-
-            (var userName, var repoName, var releaseTag) = templateName.Parsing();
+            (var userName, var repoName, var releaseTag) = templateName.TemplateNameParse();
 
             UserName = userName;
             RepoName = repoName;

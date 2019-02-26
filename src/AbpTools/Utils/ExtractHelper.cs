@@ -37,11 +37,19 @@ namespace AbpTools.Utils
                     //remove first level folder
                     if (firstZipEntry.IsDirectory)
                     {
-                        entryFileName = entryFileName.Substring(entryFileName.IndexOf("/") + 1);
-                        if (!string.IsNullOrWhiteSpace(explicitFolderInZip)
-                            && !entryFileName.StartsWith(explicitFolderInZip.EnsureEndsWith('/')))
+                        entryFileName = entryFileName.Substring(entryFileName.IndexOf("/") + 1);  
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(explicitFolderInZip))
+                    {
+                        if (!entryFileName.StartsWith(explicitFolderInZip.EnsureEndsWith('/')))
                         {
                             continue;
+                        }
+                        else
+                        {
+                            //remove explicitFolder level 
+                            entryFileName = entryFileName.Substring(entryFileName.IndexOf("/") + 1);
                         }
                     }
 

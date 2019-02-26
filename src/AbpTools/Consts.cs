@@ -32,8 +32,9 @@
 
             public static class New
             {
-                public const string CommandDescription = "";
+                public const string CommandDescription = "Should be executed in aspnet-core folder, and create new console or module in aspnet-core/src folder.";
                 public const string IdentifierDescription = "";
+                public const string NameDescription = "";
             }
         }
     }

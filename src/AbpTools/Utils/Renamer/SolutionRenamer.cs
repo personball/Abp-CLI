@@ -20,10 +20,11 @@ namespace AbpTools.Utils.Renamer
 
         private readonly string _companyNamePlaceHolder;
         private readonly string _projectNamePlaceHolder;
+        private readonly string _moduleNamePlaceholder;
 
         private readonly string _companyName;
         private readonly string _projectName;
-
+        private readonly string _moduleName;
         /// <summary>
         /// Creates a new <see cref="SolutionRenamer"/>.
         /// </summary>
@@ -62,6 +63,20 @@ namespace AbpTools.Utils.Renamer
             CreateBackup = true;
         }
 
+        public SolutionRenamer(string folder,
+            string companyNamePlaceHolder, string projectNamePlaceHolder, string moduleNamePlaceholder,
+            string companyName, string projectName, string moduleName)
+            : this(folder, companyNamePlaceHolder, projectNamePlaceHolder, companyName, projectName)
+        {
+            if (moduleNamePlaceholder.IsNullOrWhiteSpace() && !moduleName.IsNullOrWhiteSpace())
+            {
+                throw new Exception($"Can not set {nameof(moduleName)} if {nameof(moduleNamePlaceholder)} is null.");
+            }
+
+            _moduleNamePlaceholder = moduleNamePlaceholder;
+            _moduleName = moduleName;
+        }
+
         public void Run()
         {
             if (CreateBackup)
@@ -88,6 +103,14 @@ namespace AbpTools.Utils.Renamer
             RenameDirectoryRecursively(_folder, _projectNamePlaceHolder, _projectName);
             RenameAllFiles(_folder, _projectNamePlaceHolder, _projectName);
             ReplaceContent(_folder, _projectNamePlaceHolder, _projectName);
+
+            if (_moduleNamePlaceholder != null && _moduleName != null)
+            {
+                RenameDirectoryRecursively(_folder, _moduleNamePlaceholder, _moduleName);
+                RenameAllFiles(_folder, _moduleNamePlaceholder, _moduleName);
+                ReplaceContent(_folder, _moduleNamePlaceholder, _moduleName);
+            }
+
         }
 
         private void Backup()

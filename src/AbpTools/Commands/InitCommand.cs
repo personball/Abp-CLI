@@ -64,7 +64,7 @@ namespace AbpTools.Commands
             }
 
             Console.WriteLine($"TemplateName\t:{TemplateName}");
-            Console.WriteLine($"PlaceHolder\t:{PlaceHolder}");
+            Console.WriteLine($"Placeholder\t:{Placeholder}");
             Console.WriteLine($"ProjectName\t:{ProjectName}");
             Console.WriteLine($"MPA\t\t:{Mpa}");
             Console.WriteLine($"SpaType\t\t:{SpaType}");
@@ -91,7 +91,7 @@ namespace AbpTools.Commands
 
             if (!Mpa)
             {
-                excludeFolders.Add($"./aspnet-core/src/{PlaceHolder}.Web.Mvc");
+                excludeFolders.Add($"./aspnet-core/src/{Placeholder}.Web.Mvc");
                 //TODO@personball remove web.mvc entry in vs solution file(sln). 
                 switch (SpaType.ToLower())
                 {
@@ -108,7 +108,9 @@ namespace AbpTools.Commands
                 }
             }
 
-            RenameHelper.RenameFolders(projectFolder, PlaceHolder, ProjectName, RenameBackup, excludeFolders);
+            // Placeholder as AbpCompanyName.AbpProjectName
+            // ProjectName as CompanyName.ProjectName or just ProjectName
+            RenameHelper.RenameFolders(projectFolder, Placeholder, ProjectName, RenameBackup, excludeFolders);
 
             Console.WriteLine("Init Completed!");
             return 0;
