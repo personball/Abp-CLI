@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AbpTools.Renamer
+namespace AbpTools.Utils.Renamer
 {
     /// <summary>
     /// Used to rename a solution, code from https://gist.github.com/hikalkan/014eecdae7c8d2677b192fcebcf5ba29?tdsourcetag=s_pcqq_aiomsg

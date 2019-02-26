@@ -8,6 +8,15 @@ namespace AbpTools.Commands
     [HelpOption("--help")]
     abstract class AbpCommandBase
     {
+        [Option("-T|--template-name", Consts.Descriptions.Base.TemplateNameDescription, CommandOptionType.SingleValue)]
+        public string TemplateName { get; set; } = Consts.DefaultProjectTemplateName;
+
+        /// <summary>
+        /// TODO get placeholder in project template config?
+        /// </summary>
+        [Option("-h|--place-holder", Consts.Descriptions.Base.PlaceHolderDescription, CommandOptionType.SingleValue)]
+        public string PlaceHolder { get; set; } = Consts.DefaultPlaceHolder;
+        
         public abstract List<string> CreateArgs();
 
         protected virtual Task<int> OnExecuteAsync(CommandLineApplication app)

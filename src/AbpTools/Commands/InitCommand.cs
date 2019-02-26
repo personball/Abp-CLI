@@ -11,12 +11,6 @@ namespace AbpTools.Commands
     [Command(Description = Consts.Descriptions.Init.CommandDescription)]
     class InitCommand : AbpCommandBase
     {
-        [Option("-T|--template-name", Consts.Descriptions.Init.TemplateNameDescription, CommandOptionType.SingleValue)]
-        public string TemplateName { get; set; } = Consts.DefaultProjectTemplateName;
-
-        [Option("-h|--place-holder", Consts.Descriptions.Init.PlaceHolderDescription, CommandOptionType.SingleValue)]
-        public string PlaceHolder { get; set; } = Consts.DefaultPlaceHolder;
-
         [Argument(0, nameof(ProjectName), Consts.Descriptions.Init.ProjectNameDescription, ShowInHelpText = true)]
         public string ProjectName { get; set; } = Consts.DefaultProjectName;
 
@@ -24,7 +18,7 @@ namespace AbpTools.Commands
         public bool Mpa { get; set; } = false;
 
         [Option("-t|--project-type", Consts.Descriptions.Init.SpaTypeDescription, CommandOptionType.SingleValue)]
-        [AllowedValues("vue", "ng", "react", "console", IgnoreCase = true)]
+        [AllowedValues("vue", "ng", "react", IgnoreCase = true)]
         public string SpaType { get; set; }
 
         [Option("-b", Consts.Descriptions.Init.RenameBackupDescription, CommandOptionType.NoValue)]
@@ -74,14 +68,12 @@ namespace AbpTools.Commands
             {
                 Directory.CreateDirectory(projectFolder);
             }
-            
-            (var userName, var repoName, var tagName) = TemplateName.Parsing();
-
-            var tplFinder = new TemplateFinder(userName, repoName, tagName);
+           
+            var tplFinder = new TemplateFinder(TemplateName);
 
             var tplFilePath = await tplFinder.Fetch();
             
-            ExtractHelper.ExtractZipFile(tplFilePath, projectFolder, repoName);
+            ExtractHelper.ExtractZipFile(tplFilePath, projectFolder);
 
             var excludeFolders = new List<string> { "./vue", "./angular", "./reactjs" };
             if (!Mpa)

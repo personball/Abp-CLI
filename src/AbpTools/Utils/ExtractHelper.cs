@@ -7,7 +7,7 @@ namespace AbpTools.Utils
 {
     public class ExtractHelper
     {
-        public static void ExtractZipFile(string archiveFilenameIn, string outFolder, string repoName)
+        public static void ExtractZipFile(string archiveFilenameIn, string outFolder)
         {
             Console.WriteLine($"Extracting Project Template Zip:{archiveFilenameIn}...");
             Console.WriteLine($"Extracting To:{outFolder}...");

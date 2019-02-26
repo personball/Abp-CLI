@@ -11,8 +11,10 @@ namespace AbpTools.ProjectTemplates
     {
         public static string TemplateFilesRoot = Path.Combine(Path.GetTempPath(), $".{Path.DirectorySeparatorChar}_abplus_tpls");
 
-        public TemplateFinder(string userName, string repoName, string releaseTag)
+        public TemplateFinder(string templateName)
         {
+            (var userName, var repoName, var releaseTag) = templateName.Parsing();
+
             UserName = userName;
             RepoName = repoName;
             ReleaseTag = releaseTag;

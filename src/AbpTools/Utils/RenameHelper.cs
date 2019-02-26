@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using AbpTools.Renamer;
+using AbpTools.Utils.Renamer;
 
 namespace AbpTools.Utils
 {
