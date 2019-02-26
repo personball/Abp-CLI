@@ -31,11 +31,6 @@ namespace AbpTools.Commands
 
         protected override async Task<int> OnExecuteAsync(CommandLineApplication app)
         {
-            if (TemplateName.IndexOf('/') <= 0 || TemplateName.EndsWith('/'))
-            {
-                Console.WriteLine("Invalid TemplateName!Please Enter As Format aspnetboilerplate/module-zero-core-template@v4.2.0 ");
-            }
-
             if (!Mpa)
             {
                 //switch to personball/module-zero-core-template to reduce size of project template zip file
@@ -98,7 +93,7 @@ namespace AbpTools.Commands
             RenameHelper.RenameFolders(projectFolder, PlaceHolder, ProjectName, RenameBackup, excludeFolders);
             
             Console.WriteLine("Init Completed!");
-            return 1;
+            return 0;
         }
 
         public override List<string> CreateArgs()
