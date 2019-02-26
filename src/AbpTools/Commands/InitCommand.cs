@@ -29,6 +29,19 @@ namespace AbpTools.Commands
         // This will automatically be set before OnExecute is invoked
         private Abp Parent { get; set; }
 
+        public static List<string> InitExcludedFolders = new List<string> { "./vue", "./angular", "./reactjs" };
+
+        static InitCommand()
+        {
+            NewCommand.IdentifierFolders.ForEach(s =>
+            {
+                if (!InitExcludedFolders.Contains(s))
+                {
+                    InitExcludedFolders.Add(s);
+                }
+            });
+        }
+
         protected override async Task<int> OnExecuteAsync(CommandLineApplication app)
         {
             if (!Mpa)
@@ -63,14 +76,19 @@ namespace AbpTools.Commands
             {
                 Directory.CreateDirectory(projectFolder);
             }
-           
+
             var tplFinder = new TemplateFinder(TemplateName);
 
             var tplFilePath = await tplFinder.Fetch();
-            
+
             ExtractHelper.ExtractZipFile(tplFilePath, projectFolder);
 
-            var excludeFolders = new List<string> { "./vue", "./angular", "./reactjs" };
+            var excludeFolders = new List<string>();
+            InitExcludedFolders.ForEach(s =>
+            {
+                excludeFolders.Add(s);
+            });
+
             if (!Mpa)
             {
                 excludeFolders.Add($"./aspnet-core/src/{PlaceHolder}.Web.Mvc");
@@ -89,9 +107,9 @@ namespace AbpTools.Commands
                         break;
                 }
             }
-            
+
             RenameHelper.RenameFolders(projectFolder, PlaceHolder, ProjectName, RenameBackup, excludeFolders);
-            
+
             Console.WriteLine("Init Completed!");
             return 0;
         }

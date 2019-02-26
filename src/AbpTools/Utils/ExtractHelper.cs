@@ -7,7 +7,7 @@ namespace AbpTools.Utils
 {
     public class ExtractHelper
     {
-        public static void ExtractZipFile(string archiveFilenameIn, string outFolder)
+        public static void ExtractZipFile(string archiveFilenameIn, string outFolder, string explicitFolderInZip = null)
         {
             Console.WriteLine($"Extracting Project Template Zip:{archiveFilenameIn}...");
             Console.WriteLine($"Extracting To:{outFolder}...");
@@ -38,12 +38,19 @@ namespace AbpTools.Utils
                     if (firstZipEntry.IsDirectory)
                     {
                         entryFileName = entryFileName.Substring(entryFileName.IndexOf("/") + 1);
+                        if (!string.IsNullOrWhiteSpace(explicitFolderInZip)
+                            && !entryFileName.StartsWith(explicitFolderInZip.EnsureEndsWith('/')))
+                        {
+                            continue;
+                        }
                     }
 
                     string fullZipToPath = Path.Combine(outFolder, entryFileName);
                     string directoryName = Path.GetDirectoryName(fullZipToPath);
                     if (directoryName.Length > 0)
+                    {
                         Directory.CreateDirectory(directoryName);
+                    }
 
                     // Unzip file in buffered chunks. This is just as fast as unpacking to a buffer the full size
                     // of the file, but does not waste memory.

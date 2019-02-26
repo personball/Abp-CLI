@@ -35,5 +35,15 @@ namespace AbpTools
                 throw new ArgumentNullException(nameof(templateName));
             }
         }
+
+        public static string EnsureEndsWith(this string v, char b)
+        {
+            if (v.EndsWith(b))
+            {
+                return v;
+            }
+
+            return v + b;
+        }
     }
 }

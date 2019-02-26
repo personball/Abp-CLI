@@ -5,7 +5,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace AbpTools.Commands
 {
     [Command(Description = Consts.Descriptions.New.CommandDescription)]
-    class NewCommand : AbpCommandBase
+    class TestCommand : AbpCommandBase
     {
         [Argument(0, nameof(Identifier), Consts.Descriptions.New.IdentifierDescription, ShowInHelpText = true)]
         [AllowedValues("console", "module", IgnoreCase = true)]
@@ -15,8 +15,6 @@ namespace AbpTools.Commands
         // use from sub-commands.
         // This will automatically be set before OnExecute is invoked
         private Abp Parent { get; set; }
-
-        public static List<string> IdentifierFolders = new List<string> { "./console", "./module" };
 
         protected override async Task<int> OnExecuteAsync(CommandLineApplication app)
         {
@@ -35,7 +33,7 @@ namespace AbpTools.Commands
         public override List<string> CreateArgs()
         {
             var args = Parent.CreateArgs();
-            args.Add("new");
+            args.Add("test");
 
             return args;
         }
