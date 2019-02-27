@@ -9,8 +9,6 @@ namespace AbpTools.ProjectTemplates
 {
     public class TemplateFinder
     {
-        public static string TemplateFilesRoot = Path.Combine(Path.GetTempPath(), $".{Path.DirectorySeparatorChar}_abplus_tpls");
-
         public TemplateFinder(string templateName)
         {
             (var userName, var repoName, var releaseTag) = templateName.TemplateNameParse();
@@ -34,17 +32,17 @@ namespace AbpTools.ProjectTemplates
             Console.WriteLine($"Querying Releases From Github.com/{UserName}/{RepoName}@{ReleaseTag}...");
             var release = await QueryRelaseFromGithub();
 
-            var projectTemplateFileName = $"{release.Author.Login}_{RepoName}@{release.Name}.zip";
-            var tplFilePath = Path.Combine(TemplateFilesRoot, $".{Path.DirectorySeparatorChar}{projectTemplateFileName}");
+            var projectTemplateFileName = $"{release.Author.Login}_{RepoName}@{release.TagName}.zip";
+            var tplFilePath = Path.Combine(Consts.TemplateFilesRoot, $".{Path.DirectorySeparatorChar}{projectTemplateFileName}");
             if (File.Exists(tplFilePath))
             {
                 return tplFilePath;
             }
             else
             {
-                if (!Directory.Exists(TemplateFilesRoot))
+                if (!Directory.Exists(Consts.TemplateFilesRoot))
                 {
-                    Directory.CreateDirectory(TemplateFilesRoot);
+                    Directory.CreateDirectory(Consts.TemplateFilesRoot);
                 }
 
                 DownLoadHelper.DownLoadZipFile(release.ZipballUrl, tplFilePath);

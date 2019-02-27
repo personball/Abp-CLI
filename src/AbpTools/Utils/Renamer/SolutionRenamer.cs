@@ -104,7 +104,7 @@ namespace AbpTools.Utils.Renamer
             RenameAllFiles(_folder, _projectNamePlaceHolder, _projectName);
             ReplaceContent(_folder, _projectNamePlaceHolder, _projectName);
 
-            if (_moduleNamePlaceholder != null && _moduleName != null)
+            if (!_moduleNamePlaceholder.IsNullOrWhiteSpace() && !_moduleName.IsNullOrWhiteSpace())
             {
                 RenameDirectoryRecursively(_folder, _moduleNamePlaceholder, _moduleName);
                 RenameAllFiles(_folder, _moduleNamePlaceholder, _moduleName);

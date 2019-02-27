@@ -1,4 +1,7 @@
-﻿namespace AbpTools
+﻿using System;
+using System.IO;
+
+namespace AbpTools
 {
     public class Consts
     {
@@ -12,16 +15,19 @@
         public const string DefaultPlaceHolder = "AbpCompanyName.AbpProjectName";
         public const string DefaultProjectName = "AbpDemo";
 
-        public static class Descriptions
+        public const string DefaultConsoleName = "Abplus.DemoConsole";
+        public const string DefaultModuleName = "Abplus.Modules.DemoModule";
+
+        public  class Descriptions
         {
-            public static class Base
+            public  class Base
             {
                 public const string TemplateNameDescription = "TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.";
 
                 public const string PlaceHolderDescription = "PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.";
             }
 
-            public static class Init
+            public  class Init
             {
                 public const string CommandDescription = "Init a project from project template.";
                 public const string ProjectNameDescription = "Your project name, default as 'AbpDemo'.";
@@ -30,12 +36,19 @@
                 public const string RenameBackupDescription = "When enabled, it will create a backup for target folder while renaming. Default as 'false'";
             }
 
-            public static class New
+            public  class New
             {
                 public const string CommandDescription = "Should be executed in aspnet-core folder, and create new console or module in aspnet-core/src folder.";
                 public const string IdentifierDescription = "";
                 public const string NameDescription = "";
             }
+
+            public  class Set
+            {
+                public const string CommandDescription = "";
+            }
         }
+
+        public static string TemplateFilesRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), $".{Path.DirectorySeparatorChar}Abplus");
     }
 }

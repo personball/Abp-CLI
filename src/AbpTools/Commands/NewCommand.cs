@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using AbpTools.ProjectTemplates;
@@ -33,9 +34,25 @@ namespace AbpTools.Commands
         protected override async Task<int> OnExecuteAsync(CommandLineApplication app)
         {
             Identifier = Identifier.ToLower();
-            
-            //TODO set default template?
 
+            if (Name.IsNullOrWhiteSpace())
+            {
+                var defaultName = string.Empty;
+                switch (Identifier)
+                {
+                    case "console":
+                        defaultName = Consts.DefaultConsoleName;
+                        break;
+                    case "module":
+                        defaultName = Consts.DefaultModuleName;
+                        break;
+                    default:
+                        break;
+                }
+
+                Name = Prompt.GetString(Consts.Descriptions.New.NameDescription, defaultValue: defaultName);
+            }
+            
             var tplFinder = new TemplateFinder(TemplateName);
 
             var tplFilePath = await tplFinder.Fetch();
@@ -64,7 +81,7 @@ namespace AbpTools.Commands
             }
 
             RenameHelper.RenameFolders(projectFolder, Placeholder, Name, false, null);
-            
+
             return 0;
         }
 

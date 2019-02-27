@@ -1,15 +1,17 @@
-﻿using AbpTools.Commands;
-using McMaster.Extensions.CommandLineUtils;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using AbpTools.Commands;
+using McMaster.Extensions.CommandLineUtils;
 
 namespace AbpTools
 {
     [Command(Consts.ParentCommandName)]
     [VersionOptionFromMember("--version", MemberName = nameof(GetVersion))]
     [Subcommand(
-        typeof(InitCommand))]
+        typeof(InitCommand)
+        , typeof(NewCommand)
+        , typeof(SetCommand))]
     class Abp : AbpCommandBase
     {
         public static void Main(string[] args) => CommandLineApplication.Execute<Abp>(args);
