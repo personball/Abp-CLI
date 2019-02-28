@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using AbpTools.Utils.Renamer;
 
 namespace AbpTools.Utils
@@ -11,12 +10,10 @@ namespace AbpTools.Utils
         public static void RenameFolders(
             string folderToProcess, string placeholder, string projectName, bool renameBackup, List<string> excludedSubFolders)
         {
-            //Folders To Rename
-            if (excludedSubFolders.Any())
+            if (excludedSubFolders == null)
             {
-                Console.WriteLine("Cleaning Sub Dirs in Project Template Folder...");
+                excludedSubFolders = new List<string>();
             }
-
             //Delete ExcludeFolders
             foreach (var excludeFolder in excludedSubFolders)
             {

@@ -11,7 +11,8 @@ namespace AbpTools
     [Subcommand(
         typeof(InitCommand)
         , typeof(NewCommand)
-        , typeof(SetCommand))]
+        //, typeof(SetCommand)
+        )]
     class Abp : AbpCommandBase
     {
         public static void Main(string[] args) => CommandLineApplication.Execute<Abp>(args);

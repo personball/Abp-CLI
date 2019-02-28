@@ -15,8 +15,8 @@ namespace AbpTools
         public const string DefaultPlaceHolder = "AbpCompanyName.AbpProjectName";
         public const string DefaultProjectName = "AbpDemo";
 
-        public const string DefaultConsoleName = "Abplus.DemoConsole";
-        public const string DefaultModuleName = "Abplus.Modules.DemoModule";
+        public const string DefaultConsoleName = "Abplus.Demo";
+        public const string DefaultModuleName = "Abplus.Modules.Demo";
 
         public  class Descriptions
         {
@@ -39,8 +39,8 @@ namespace AbpTools
             public  class New
             {
                 public const string CommandDescription = "Should be executed in aspnet-core folder, and create new console or module in aspnet-core/src folder.";
-                public const string IdentifierDescription = "";
-                public const string NameDescription = "";
+                public const string IdentifierDescription = "'console' or 'module'";
+                public const string NameDescription = "Name for 'console' like 'AbpCompanyName.AbpProjectName' or for 'module' like 'AbpCompanyName.AbpProjectName.AbpModuleName' ";
             }
 
             public  class Set
