@@ -34,21 +34,24 @@ namespace AbpTools.Commands
             if (Name.IsNullOrWhiteSpace())
             {
                 var defaultName = string.Empty;
+                var promptText = string.Empty;
                 switch (Identifier)
                 {
                     case "console":
                         defaultName = Consts.DefaultConsoleName;
+                        promptText = Consts.Descriptions.New.NameConsolePrompt;
                         break;
                     case "module":
                         defaultName = Consts.DefaultModuleName;
+                        promptText = Consts.Descriptions.New.NameModulePrompt;
                         break;
                     default:
                         break;
                 }
 
-                Name = Prompt.GetString(Consts.Descriptions.New.NameDescription, defaultValue: defaultName);
+                Name = Prompt.GetString(promptText, defaultValue: defaultName);
             }
-            
+
             var tplFinder = new TemplateFinder(TemplateName);
 
             var tplFilePath = await tplFinder.Fetch();
@@ -61,12 +64,12 @@ namespace AbpTools.Commands
             }
 
             ExtractHelper.ExtractZipFile(tplFilePath, projectFolder, Identifier);
-            
+
             if (Identifier == "module")
             {
                 Placeholder = $"{Placeholder}.{DefaultModuleNamePlaceholder}";
             }
-            
+
             RenameHelper.RenameFolders(projectFolder, Placeholder, Name, false, null);
 
             return 0;

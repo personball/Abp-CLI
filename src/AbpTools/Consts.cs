@@ -41,6 +41,8 @@ namespace AbpTools
                 public const string CommandDescription = "Should be executed in aspnet-core folder, and create new console or module in aspnet-core/src folder.";
                 public const string IdentifierDescription = "'console' or 'module'";
                 public const string NameDescription = "Name for 'console' like 'AbpCompanyName.AbpProjectName' or for 'module' like 'AbpCompanyName.AbpProjectName.AbpModuleName' ";
+                public const string NameConsolePrompt = "Name for 'console' like 'AbpCompanyName.AbpProjectName':";
+                public const string NameModulePrompt = "Name for 'module' like 'AbpCompanyName.AbpProjectName.AbpModuleName':";
             }
 
             public  class Set
