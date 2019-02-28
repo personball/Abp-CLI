@@ -80,7 +80,7 @@ abplus init
 abplus new
 
 ```powershell
-    l> abplus new --help
+    $> abplus new --help
     Should be executed in aspnet-core folder, and create new console or module in aspnet-core/src folder.
 
     Usage: abplus new [arguments] [options]
