@@ -125,4 +125,8 @@ But there are two notices:
     //other folders and files not care.  
 ```
 
+# Local Templates Folder
+
+As Version 1.2.0, abplus will save the template zip file (release of the repository) which download from github in local user's folder  '%User%\AppData\Roaming\Abplus' to speed up command execution. For example: `C:\Users\perso\AppData\Roaming\Abplus`.
+
 # MIT
