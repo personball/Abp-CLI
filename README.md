@@ -90,8 +90,10 @@ abplus new
 
     Options:
     --help              Show help information
-    -n|--name           Name for 'console' like 'AbpCompanyName.AbpProjectName' or for 'module' like 'AbpCompanyName.AbpProjectName.AbpModuleName'
-    -T|--template-name  TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.
+    -n|--name           Name for 'console' like 'AbpCompanyName.AbpProjectName' or for   
+                        'module' like 'AbpCompanyName.AbpProjectName.AbpModuleName'
+    -T|--template-name  TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>], default as 
+                        'aspnetboilerplate/module-zero-core-template@latest'.
     -h|--placeholder    PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.
 ```
 

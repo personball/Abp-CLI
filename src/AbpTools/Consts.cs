@@ -22,7 +22,7 @@ namespace AbpTools
         {
             public  class Base
             {
-                public const string TemplateNameDescription = "TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>],default as 'aspnetboilerplate/module-zero-core-template@latest'.";
+                public const string TemplateNameDescription = "TemplateName <GithubUserName>/<RepoName>[@<ReleaseTag>], default as 'aspnetboilerplate/module-zero-core-template@latest'.";
 
                 public const string PlaceHolderDescription = "PlaceHolder in project template,default as 'AbpCompanyName.AbpProjectName'.";
             }
