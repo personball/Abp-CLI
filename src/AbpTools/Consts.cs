@@ -29,7 +29,7 @@ namespace AbpTools
 
             public  class Init
             {
-                public const string CommandDescription = "Init a project from project template.";
+                public const string CommandDescription = "Init a solution from template.";
                 public const string ProjectNameDescription = "Your project name, default as 'AbpDemo'.";
                 public const string MpaDescription = "Is this project a Multi-Pages Application? Default as false.";
                 public const string SpaTypeDescription = "Choose 'vue' for vuejs or 'ng' for angularjs or 'react' for reactjs. Any invalid value will be replaced by 'vue'.";
