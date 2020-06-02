@@ -6,7 +6,7 @@ ABP Command Line Tool.
 
 This command is built following [dotnet core global tools](https://docs.microsoft.com/zh-cn/dotnet/core/tools/global-tools).  
 
-[中文版readme](https://github.com/personball/Abp-CLI/wiki)
+[中文版readme](README_zh.md)
 
 # Install
 
